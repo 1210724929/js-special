@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片爆炸效果</title>
+	<style>
+		*{margin: 0;padding: 0;list-style: none;}
+		#div1{width: 480px;height: 720px;position: absolute;
+			left: 50%;margin-left:-320px;top: 50%;margin-top:-300px;
+			border: 1px solid black; 			
+		}
+		#div1>div{
+			position: absolute;
+			width: 100%;height: 100%;left: 0;top: 0;
+			transform-style: preserve-3d;
+		}
+		#div1>div>div{
+			position: absolute;
+			transform: perspective(800px);
+		}
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<audio controls="false" src="My Sunshine.mp3" autoplay="true"></audio>
+	<input type="text" placeholder="hs">
+	<script type="text/javascript">
+		//存放图片
+		var arr=['1.jpg','冰4.jpg','冰7.jpg']
+		var index=0;
+		//借助层次 来使得爆炸的div处于显示图片的上面
+		var z=999;
+		function boom(l,t) {			
+			// 在div1下创建两个div 一个存放是爆炸效果 一个是显示这张图片
+			var oParentNode=document.createElement('div');
+			oParentNode.style.zIndex=z;			
+			//z=(z==0)?999:z--;
+			z--;
+			div1.appendChild(oParentNode);
+
+			var x=l;
+			var y=t;
+			for(var i=0;i<y;i++){
+				for(var j=0;j<x;j++){
+					var oDiv=document.createElement('div');
+					oDiv.style.background='url('+arr[index]+')';
+					oDiv.style.width=div1.clientWidth/x+'px';
+					oDiv.style.height=div1.clientHeight/y+'px';
+					oDiv.style.left=(div1.clientWidth/x)*j+'px';
+					oDiv.style.top=(div1.clientHeight/y)*i+'px';
+
+					oDiv.style.backgroundPositionX=(div1.clientWidth/x)*-j+'px';
+					oDiv.style.backgroundPositionY=(div1.clientHeight/y)*-i+'px';
+
+					oDiv.style.transition=(Math.random()*1+1.5)+'s';//过渡时间
+					oParentNode.appendChild(oDiv);
+				}
+			};
+			var allDiv=oParentNode.children;
+			//爆炸效果 就是对 所有div进行随机平移和旋转缩放等变换
+			//定时器 过一时间爆炸
+			setTimeout(function(){
+				index++;
+				index==arr.length && (index=0);
+				//这样相当于两个div中只要一个发生效果 通过层次 来处理爆炸和显示效果
+				boom(l,t);
+				for(var i=0;i<allDiv.length;i++){
+					allDiv[i].style.transform='perspective(800px) scale('+(Math.random()*1.3+0.8)+') translateX('+(Math.random()*400-200)+'px) translateY('+(Math.random()*400-200)+'px) rotateX('+(Math.random()*360-180)+'deg) rotateY('+(Math.random()*360-180)+'deg)'
+					//爆炸后消失效果 可以利用缩放：scale(0) 或者透明度 或者阴影
+					allDiv[i].style.opacity=0;
+				}
+			},2000);
+			
+			//归为 复原  就是将所有变化置0
+			/*setTimeout(function(){
+				for(var i=0;i<allDiv.length;i++){
+					allDiv[i].style.transform='perspective(800px) scale(1) translateX(0px) translateY(0px) rotateX(0deg) rotateY(0deg)'
+				}
+			},3000);*/
+			//消失后 div要删除 这样删除不了allDiv[i].remove();
+			setTimeout(function(){
+				oParentNode.remove();
+				//这是实现爆炸一个功能时候 上面这条是再加了一个div用来存放图片后的爆炸清除处理
+				//div1.innerHTML='';				
+				},4500);//和过渡时间和爆炸效果定时器时间相互照应 即变化完成了在清除
+			}
+			boom(6,8);
+	</script>
+</body>
+</html>

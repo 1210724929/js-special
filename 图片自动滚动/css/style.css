@@ -1,0 +1,20 @@
+@charset "utf-8";
+body{margin:0;padding:0;font:12px/1.5 "\5B8B\4F53",san-serif;background:#F8F9F3;color:#000;}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,blockquote,p{padding:0;margin:0;}
+table,td,tr,th{font-size:12px;}li{list-style-type:none;}
+img{vertical-align:top;border:0;}
+ol,ul{list-style:none;}
+h1,h2,h3,h4,h5,h6{font-size:12px;font-weight:normal;}
+address,cite,code,em,th,i{font-weight:normal;font-style:normal;}
+label{vertical-align:middle}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.clearfix{display:inline-block;}
+* html .clearfix{height:1%;}
+.clearfix{display:block;}
+
+/* pic-list */
+.scrollbox{width:990px;margin:40px auto 0 auto;}
+.pic-list{height:164px;overflow:hidden;border-bottom:solid 1px #fff;position:relative;}
+.pic-list ul{position:absolute;left:0px;top:0px;}
+.pic-list .picture{float:left;width:164px;height:164px;border-right:solid 1px #fff;position:relative;background:#eee;}
+.pic-list .picture em{display:inline-block;background:#000;opacity:0.75;filter:alpha(opacity:75);color:#fff;padding:0px 5px;height:20px;line-height:20px;position:absolute;right:0px;bottom:0px;text-decoration:none;}

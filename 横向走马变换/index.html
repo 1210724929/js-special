@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="keywords" content="16素材网" />
+<meta name="description" content="16素材网" />
+<title>迅雷jQuery横向擦除焦点图代码_16素材网</title>
+<link rel="stylesheet" href="css/16sucai.css">
+<base target="_blank">
+</head>
+<body>
+<!-- 代码 开始 --><br /><br />
+<div class="focus">
+    <div class="focusbox">         
+        <div class="focusimg">
+        <ul class="fimglist clearfix">
+            <li><a href="http://www.16sucai.com/"><img src="images/Gintama.jpg" title="16素材网"></a></li>
+            <li><a href="http://www.16sucai.com/"><img src="images/SteinsGate.jpg" title="16素材网"></a></li>
+            <li><a href="http://www.16sucai.com/"><img src="images/Unicorn.jpg" title="16素材网"></a></li>
+            <li><a href="http://www.16sucai.com/"><img src="images/Berserk.jpg" title="16素材网"></a></li>
+            <li><a href="http://www.16sucai.com/"><img src="images/SummerWars.jpg" title="16素材网"></a></li>
+            <li><a href="http://www.16sucai.com/"><img src="images/akito.jpg" title="16素材网"></a></li>
+            <li><a href="http://www.16sucai.com/"><img src="images/EVA.jpg" title="16素材网"></a></li>
+        </ul>
+        </div> 
+        <div class="focustool">
+        <ul class="ftoollist clearfix"><!--通过控制该ul的left值来实现列表的左右移动，增量为931px-->
+            <li class="on"><a href="http://www.16sucai.com/"><img src="images/Gintama_s.jpg"><p class="imgname">银魂剧场版</p><p class="imgshortcat">永远的万事屋</p></a></li><!--当前项时为该li添加class: on-->
+            <li><a href="http://www.16sucai.com/"><img src="images/SteinsGate_s.jpg"><p class="imgname">石头门剧场版</p><p class="imgshortcat">负荷领域的既视感</p></a></li>
+            <li><a href="http://www.16sucai.com/"><img src="images/Unicorn_s.jpg"><p class="imgname">高达UC</p><p class="imgshortcat">Gundam Unicorn</p></a></li>
+            <li><a href="http://www.16sucai.com/"><img src="images/Berserk_s.jpg"><p class="imgname">剑风传奇</p><p class="imgshortcat">黄金时代</p></a></li>
+            <li><a href="http://www.16sucai.com/"><img src="images/SummerWars_s.jpg"><p class="imgname">夏日大作战</p><p class="imgshortcat">Summer Wars</p></a></li>
+            <li><a href="http://www.16sucai.com/"><img src="images/akito_s.jpg"><p class="imgname">亡国的阿基德</p><p class="imgshortcat">Code Geass</p></a></li>
+            <li><a href="http://www.16sucai.com/"><img src="images/EVA_s.jpg"><p class="imgname">新EVA剧场版</p><p class="imgshortcat">New Evangelion</p></a></li>
+        </ul>
+        </div>
+        <a href="javascript://" class="btn_pre" target="_self" style="display:none">上一页</a>
+        <a href="javascript://" class="btn_next" target="_self" style="display:none">下一页</a>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+    jQuery.noConflict();
+	jQuery(document).ready(function($){
+		$(".guidelist li").hover(
+			function () {
+				$(this).attr("class", "mouseon");
+			  },
+			  function () {
+				$(this).attr("class", "mouseout");
+			  }
+		);
+		$(".ftoollist li").mouseover(function(){
+			$(this).siblings().removeClass("on");
+			$(this).addClass("on");
+			var preNumber=$(this).prevAll().size();
+			$(".fimglist li").removeClass("onpre");
+			$(".fimglist li:nth-child("+preNumber+")").addClass("onpre");
+			var margin = 990;
+			margin = margin *preNumber; 
+			margin = margin * -1;
+			$(".fimglist").stop().animate({marginLeft: margin + "px"}, {duration: 500});
+		});
+	});
+</script>
+<!-- 代码 结束 -->
+
+</body>
+</html>

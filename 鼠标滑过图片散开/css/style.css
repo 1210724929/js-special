@@ -1,0 +1,26 @@
+@charset "utf-8";
+body, ul, dl, dd, dt, ol, li, p, h1, h2, h3, h4, h5, h6, textarea, form, select, fieldset, table, td, div, input {margin:0;padding:0;-webkit-text-size-adjust: none}
+h1, h2, h3, h4, h5, h6{font-size:12px;font-weight:normal}
+body>div{margin:0 auto}
+div {text-align:left}
+a img {border:0}
+body { color: #333; text-align: center; font: 12px "宋体"; }
+ul, ol, li {list-style-type:none;vertical-align:0}
+a {outline-style:none;color:#535353;text-decoration:none}
+a:hover { color: #D40000; text-decoration: none}
+
+.infoCon { padding: 20px 0px; overflow: hidden; clear: both; display: block; zoom: 1; width:1002px; margin:0 auto }
+.qitem { background: url(../images/bg.jpg) no-repeat; margin: 10px 15px 5px 0px; width: 233px; height: 211px; overflow: hidden; float: left; position: relative; cursor: pointer; }
+.qitem img { border: 0px currentColor; position: absolute; z-index: 200; }
+.qitem .caption { color: rgb(204, 204, 204); display: block; position: absolute; z-index: 0; }
+.qitem .caption p { margin: 0px; padding: 13px 0px 0px 20px; line-height: 30px; font-size: 12px; }
+#teshu p { padding: 13px 10px 0px; line-height: 22px; }
+#teshu2 p { padding: 13px 0px 0px 65px; }
+.topLeft { float: left; position: absolute; background-repeat: no-repeat; }
+.topRight { float: left; position: absolute; background-repeat: no-repeat; }
+.bottomLeft { float: left; position: absolute; background-repeat: no-repeat; }
+.bottomRight { float: left; position: absolute; background-repeat: no-repeat; }
+.topLeft { background-position: left top; }
+.topRight { background-position: right top; }
+.bottomLeft { background-position: left bottom; }
+.bottomRight { background-position: right bottom; }
